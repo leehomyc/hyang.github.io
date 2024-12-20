@@ -6,6 +6,7 @@
     <title>Harry Yang - Personal Webpage</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <!-- AOS Library CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
@@ -164,7 +165,6 @@
         }
 
         .tabs-column:hover {
-            transform:translateY(-5px);
             box-shadow:0 8px 20px var(--shadow-color);
         }
 
@@ -204,20 +204,26 @@
         }
 
         .card-container {
-            display:grid; gap:30px;
-            grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            margin: 20px 0;
+            overflow: visible; /* Allow overflow */
         }
 
         .card {
             background-color: var(--card-background);
-            border-radius:15px;
-            padding:20px;
-            box-shadow:0 4px 15px var(--shadow-color);
-            transition:transform 0.3s, box-shadow 0.3s;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: visible; /* Allow overflow for popovers */
+            position: relative; /* Ensure correct stacking context for popovers */
         }
 
+        
+
         .card:hover {
-            transform:translateY(-5px);
             box-shadow:0 10px 25px var(--shadow-color);
         }
 
@@ -233,25 +239,69 @@
             list-style:disc; padding-left:20px; margin-top:10px;
         }
 
-        .names-grid {
-            display:flex; flex-wrap:wrap; gap:15px;
-        }
+       .names-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three names per row */
+    gap: 20px; /* Add spacing between names */
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
 
         .name-pill {
-            display:inline-block;
-            background:var(--accent-color);
-            color:var(--primary-color);
-            padding:10px 20px;
-            border-radius:20px;
-            font-weight:500;
-            box-shadow:0 2px 5px rgba(0,0,0,0.2);
-            transition:background-color 0.3s, transform 0.3s;
-        }
+    display: inline-block;
+    font-family: 'Dancing Script', cursive; /* A handwriting-style font */
+    font-size: 1.5rem; /* Larger font for a signature effect */
+    color: var(--accent-color);
+    position: relative; /* For the custom underline */
+    margin: 10px;
+    cursor: pointer; /* To indicate interactivity */
+    text-align: center;
+    transition: color 0.3s ease;
+}
 
-        .name-pill:hover {
-            background-color:var(--hover-color);
-            transform:translateY(-3px);
-        }
+.name-pill:hover {
+    color: var(--hover-color); /* Change text color on hover */
+}
+
+/* Artistic underline */
+.name-pill::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Place slightly below the text */
+    left: 0;
+    right: 0;
+    height: 12px; /* Adjust height to match the artistic style */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" fill="none" stroke="%23cccccc" stroke-width="2" stroke-linecap="round"><path d="M0 5 Q25 10 50 5 T100 5"/></svg>') no-repeat center;
+    background-size: contain;
+    z-index: -1; /* Place behind the text */
+}
+
+/* Tooltip for affiliations */
+.name-pill:hover::before {
+    content: attr(data-affiliation); /* Show affiliation from data attribute */
+    position: absolute;
+    top: 120%; /* Below the text */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--card-background);
+    color: var(--text-color);
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+    z-index: 10;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
 
         .team-card {
             position:relative; cursor:pointer; text-align:center;
@@ -276,32 +326,39 @@
         }
 
         .paper-link {
-            position:relative; text-decoration:underline; cursor:pointer; color:var(--link-color);
-        }
-
-        .paper-link:hover {
-            color:var(--hover-color);
+            position: relative; /* Ensure the tooltip is positioned relative to the link */
         }
 
         .paper-tooltip {
-            visibility:hidden; opacity:0;
-            transition:opacity 0.3s ease;
-            position:fixed; top:50%; left:50%;
-            transform:translate(-50%,-50%);
-            background:var(--tooltip-bg);
-            color:#fff;
-            padding:60px; /* Larger padding */
-            border-radius:10px;
-            width:80vw; height:80vh; /* Large area */
-            line-height:1.4; 
-            z-index:999999; 
-            text-align:left; 
-            font-size:0.9em; /* Smaller text inside */
-            overflow:auto;
+            visibility: hidden; 
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute; 
+            bottom: 110%; /* Position the tooltip above the link */
+            left: 50%; 
+            transform: translateX(-50%);
+            background: var(--tooltip-bg);
+            color: #fff;
+            padding: 15px; /* Increased padding */
+            border-radius: 5px;
+            white-space: normal; /* Allow wrapping of text */
+            word-wrap: break-word; /* Prevent long words or links from breaking the layout */
+            text-align: left;
+            font-size: 1em; /* Appropriate font size */
+            line-height: 1.6; /* Better line spacing */
+            max-width: 400px; /* Maximum width for the tooltip */
+            z-index: 999999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4); /* Enhanced shadow for better visibility */
+
+            /* Add scrolling if content is too long */
+            max-height: 300px; /* Set a maximum height */
+            overflow-y: auto; /* Add vertical scrolling if needed */
         }
 
+        /* Show tooltip on hover */
         .paper-link:hover .paper-tooltip {
-            visibility:visible; opacity:1;
+            visibility: visible; 
+            opacity: 1;
         }
 
         @keyframes fadeInUp {
@@ -331,6 +388,62 @@
             .intro-column h2 { font-size:1.5em; }
             .intro-column p { font-size:0.9em; }
             .tab { padding:5px 10px; margin:0 3px; }
+        }
+        /* Popover Styling */
+        .popover {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 120%; /* Below the link */
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--popover-bg);
+            color: var(--popover-text);
+            padding: 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            box-shadow: 0 4px 10px var(--popover-shadow);
+            z-index: 9999; /* Ensure popover is above all other elements */
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        a:hover .popover {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .popover {
+                white-space: normal;
+                max-width: 200px;
+            }
+        }
+        .expand-btn {
+            margin-left: 10px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border: none;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .expand-btn:hover {
+            background-color: var(--hover-color);
+        }
+
+        .expanded-summary {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 0.9rem;
+            background-color: var(--card-background);
+            color: var(--text-color);
+            border-left: 4px solid var(--accent-color);
+            display: none; /* Hidden by default */
         }
     </style>
 </head>
@@ -366,19 +479,31 @@
                 </div>
 
                 <!-- News Tab Content -->
+                <!-- News Tab Content -->
                 <div id="news" class="tab-content active">
                     <div class="card-container">
                         <div class="card" data-aos="zoom-in" data-aos-delay="300">
                             <h4>December 2024</h4>
                             <ul>
+                                <li>Approval to HKSTP Incubation Programme (3 years) has been granted to our video project.</li>
+                                <li>
+                                    <span class="paper-link">
+                                        <a href="https://arxiv.org/abs/2410.21340">Meta-Learning for Speeding Up Large Model Inference</a>
+                                    </span>
+                                    <button class="expand-btn" data-summary="This paper introduces a framework for scalable AI inference in decentralized environments.">
+                                        Expand
+                                    </button>
+                                    <div class="expanded-summary"></div>
+                                </li>
                                 <li>Project funded by TSSSU-O.</li>
                                 <li>
                                     <span class="paper-link">
                                         <a href="https://openreview.net/forum?id=yAPPj6nGwJ">Towards Secure and Private AI: A Framework for Decentralized Inference</a>
-                                        <div class="paper-tooltip">
-                                            This framework integrates zero-knowledge proofs, consensus-based verification, split learning, and TEEs to ensure secure, private, and fair multimodal AI systems. It enhances trust, data privacy, and model integrity while promoting reliable, sustainable, and responsible AI development.
-                                        </div>
-                                    </span> accepted to NeurIPS.
+                                    </span>
+                                    <button class="expand-btn" data-summary="This framework integrates zero-knowledge proofs, consensus-based verification, split learning, and TEEs to ensure secure, private, and fair multimodal AI systems.">
+                                        Expand
+                                    </button>
+                                    <div class="expanded-summary"></div>
                                 </li>
                             </ul>
                         </div>
@@ -404,22 +529,19 @@
                                 <li>
                                     <span class="paper-link">
                                         <a href="https://arxiv.org/pdf/2407.19401">Complete Security and Privacy for AI Inference in Decentralized Systems</a>
-                                        <div class="paper-tooltip">
-                                            This framework employs zero-knowledge proofs, consensus checks, split learning, and TEEs to protect data and model outputs, ensuring scalable, reliable, and secure decentralized AI inference where sensitive information remains protected from unauthorized access.
-                                        </div>
-                                    </span> accepted at KDD 2024.
+                                    </span>
+                                    <button class="expand-btn" data-summary="This framework employs zero-knowledge proofs, consensus checks, split learning, and TEEs to protect data and model outputs, ensuring scalable, reliable, and secure decentralized AI inference.">
+                                        Expand
+                                    </button>
+                                     <div class="expanded-summary"></div>
                                 </li>
-                            </ul>
-                        </div>
-                        <div class="card" data-aos="zoom-in" data-aos-delay="700">
-                            <h4>Featured</h4>
-                            <ul>
-                                <li><a href="https://s.foresightnews.pro/article/detail/62560">Foresight interview</a>.</li>
+                                <div class="expanded-summary"></div>
                             </ul>
                         </div>
                         <div class="card" data-aos="zoom-in" data-aos-delay="800">
                             <h4>April 2024</h4>
                             <ul>
+                                <li><a href="https://s.foresightnews.pro/article/detail/62560">Foresight interview</a>.</li>
                                 <li>Panel speaker at the Harvard Blockchain Conference 2024.</li>
                             </ul>
                         </div>
@@ -435,35 +557,35 @@
                 <!-- Students & Interns Tab Content (Name Pills) -->
                 <div id="students" class="tab-content">
                     <div class="names-grid">
-                        <span class="name-pill">Zihao Wang</span>
-                        <span class="name-pill">Yexin Liu</span>
-                        <span class="name-pill">Xuran Ma</span>
-                        <span class="name-pill">Weixiao Wang</span>
-                        <span class="name-pill">Mingzhe Zheng</span>
-                        <span class="name-pill">Xianfeng Wu</span>
-                        <span class="name-pill">Wenjie Shu</span>
-                        <span class="name-pill">Haoze Zheng</span>
-                        <span class="name-pill">Harold Chen</span>
-                        <span class="name-pill">Yatian Pang</span>
-                        <span class="name-pill">Feilong Tang</span>
-                        <span class="name-pill">Bin Ma</span>
+                        <span class="name-pill" data-affiliation="HKUST">Zihao Wang</span>
+                        <span class="name-pill" data-affiliation="HKUST-GZ">Yexin Liu</span>
+                        <span class="name-pill" data-affiliation="">Xuran Ma</span>
+                        <span class="name-pill" data-affiliation="CUHK">Weixiao Wang</span>
+                        <span class="name-pill" data-affiliation="">Mingzhe Zheng</span>
+                        <span class="name-pill" data-affiliation="Jianghan University">Xianfeng Wu</span>
+                        <span class="name-pill" data-affiliation="">Wenjie Shu</span>
+                        <span class="name-pill" data-affiliation="">Haoze Zheng</span>
+                        <span class="name-pill" data-affiliation="">Harold Chen</span>
+                        <span class="name-pill" data-affiliation="NUS">Yatian Pang</span>
+                        <span class="name-pill" data-affiliation="Monash University">Feilong Tang</span>
+                        <span class="name-pill" data-affiliation="">Bin Ma</span>
                     </div>
                 </div>
 
-                <!-- Team & Collaborators Tab Content (Name Pills) -->
+                <!-- Team & Collaborators Tab Content -->
                 <div id="team" class="tab-content">
                     <div class="names-grid">
-                        <span class="name-pill">Qiang Sun</span>
-                        <span class="name-pill">Ser-Nam Lim</span>
-                        <span class="name-pill">Xiaofeng Liu</span>
-                        <span class="name-pill">Yue Zhao</span>
-                        <span class="name-pill">Hongyang Zhang</span>
-                        <span class="name-pill">Xiaofan Liu</span>
-                        <span class="name-pill">Yaoheng Yang</span>
-                        <span class="name-pill">Benyou Wang</span>
-                        <span class="name-pill">Ailing Zeng</span>
-                        <span class="name-pill">Li Yuan</span>
-                        <span class="name-pill">Hao Li</span>
+                        <span class="name-pill" data-affiliation="UToronto">Qiang Sun</span>
+                        <span class="name-pill" data-affiliation="University of Central Florida">Ser-Nam Lim</span>
+                        <span class="name-pill" data-affiliation="Yale University">Xiaofeng Liu</span>
+                        <span class="name-pill" data-affiliation="USC">Yue Zhao</span>
+                        <span class="name-pill" data-affiliation="UWaterloo">Hongyang Zhang</span>
+                        <span class="name-pill" data-affiliation="CityU HK">Xiaofan Liu</span>
+                        <span class="name-pill" data-affiliation="USC">Yaoheng Yang</span>
+                        <span class="name-pill" data-affiliation="PKU">Benyou Wang</span>
+                        <span class="name-pill" data-affiliation="Tencent">Ailing Zeng</span>
+                        <span class="name-pill" data-affiliation="PKU">Li Yuan</span>
+                        <span class="name-pill" data-affiliation="MBZUAI">Hao Li</span>
                     </div>
                 </div>
             </div><!-- .tabs-column -->
@@ -523,6 +645,44 @@
                 tabContents.forEach(c=>c.classList.remove('active'));
                 const target=tab.getAttribute('data-target');
                 document.getElementById(target).classList.add('active');
+            });
+        });
+        // Function to adjust tooltip size and position
+        document.addEventListener("DOMContentLoaded", () => {
+            const buttons = document.querySelectorAll(".expand-btn");
+
+            buttons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const summary = button.dataset.summary;
+                    const summaryDiv = button.nextElementSibling; // Correctly targets the sibling
+
+                    if (summaryDiv.style.display === "block") {
+                        // Collapse if already expanded
+                        summaryDiv.style.display = "none";
+                        summaryDiv.textContent = "";
+                        button.textContent = "Expand";
+                    } else {
+                        // Expand and display the summary
+                        summaryDiv.style.display = "block";
+                        summaryDiv.textContent = summary;
+                        button.textContent = "Collapse";
+                    }
+                });
+            });
+        });
+        document.querySelectorAll('.expand-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const summary = button.dataset.summary;
+                const summaryDiv = button.nextElementSibling; // Get the next sibling div
+                if (summaryDiv.innerHTML) {
+                    // If already expanded, collapse it
+                    summaryDiv.innerHTML = '';
+                    button.textContent = 'Expand';
+                } else {
+                    // Expand and display the summary
+                    summaryDiv.innerHTML = summary;
+                    button.textContent = 'Collapse';
+                }
             });
         });
     </script>
