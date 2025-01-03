@@ -39,16 +39,35 @@
             position:relative;
         }
 
-        a {
-            color: var(--link-color);
-            text-decoration:none;
-            transition:color 0.3s ease;
-        }
+a {
+    color: var(--link-color);
+    text-decoration: underline; /* Add default underline */
+    text-underline-offset: 2px; /* Adjust distance of the underline from text */
+    text-decoration-thickness: 1.5px; /* Adjust the thickness of the underline */
+    transition: color 0.3s ease; /* Smooth transition for color on hover */
+}
 
-        a:hover {
-            color:var(--hover-color);
-            text-decoration:underline;
-        }
+
+a:hover {
+    color: var(--hover-color); /* Change color on hover */
+    text-decoration-thickness: 2px; /* Slightly thicken underline on hover */
+}
+
+/* Animated underline effect */
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Below the text */
+    left: 0;
+    width: 0;
+    height: 2px; /* Thickness of the underline */
+    background: var(--hover-color); /* Use hover color for the underline */
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%; /* Expand underline fully on hover */
+}
 
         header {
             position:fixed; top:0; width:100%; height:var(--navbar-height);
