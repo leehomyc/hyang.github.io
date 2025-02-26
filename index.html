@@ -471,15 +471,16 @@ a:hover::after {
             color: #ffffff;
             text-shadow: 0 0 5px #00ffe0, 0 0 10px #00ffe0, 0 0 20px #00ffe0, 0 0 40px #00ffe0;
         }
-        #background-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
+       #background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+}
         .animated-background::before {
             content: '';
             position: absolute;
@@ -499,7 +500,7 @@ a:hover::after {
     </header>
 
     <section class="animated-background">
-        <video autoplay muted loop id="background-video">
+    <video autoplay muted loop playsinline id="background-video">
         <source src="vid.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
