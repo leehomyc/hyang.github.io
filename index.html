@@ -11,18 +11,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
 :root {
-    --primary-color: #ffffff;
-    --secondary-color: #1A1A1A; /* Darker gray */
-    --accent-color: #8C8C8C;
-    --background-gradient: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.9) 100%);
-    --background-color: rgba(0, 0, 0, 0.85); /* Black with slight transparency */
-    --text-color: #f5f5f5;
-    --card-background: rgba(30, 30, 30, 0.9); /* Dark gray with slight transparency */
-    --link-color: #f5f5f5;
-    --hover-color: #A0A0A0;
-    --shadow-color: rgba(255, 255, 255, 0.1); /* Slight glow instead of black shadow */
-    --navbar-height: 60px;
-    --tooltip-bg: rgba(0, 0, 0, 0.7);
+  --primary-color: #2b2b2b;        /* Neutral dark gray for text */
+  --secondary-color: #ffffff;
+  --accent-color: #5c80b6;         /* Soft blue-gray accent */
+  --background-gradient: linear-gradient(135deg, #fff8f3 0%, #f7f9fc 100%); /* warm ivory to soft white */
+  --background-color: #fdfbf8;     /* creamy-white background */
+  --text-color: #2f2f2f;           /* slightly softer than pure black */
+--card-background: #fdf7f2; /* warm cream-white background */
+  --link-color: #3b6db3;           /* medium warm blue */
+  --hover-color: #264f85;          /* deeper blue for hover */
+  --shadow-color: rgba(0, 0, 0, 0.08); /* softer, warmer shadow */
+  --navbar-height: 60px;
+  --tooltip-bg: rgba(60, 60, 60, 0.85);
 }
 
         * {
@@ -71,7 +71,10 @@ a:hover::after {
 
         header {
             position:fixed; top:0; width:100%; height:var(--navbar-height);
-            background:rgba(58,58,58,0.9); color:var(--primary-color);
+              background: rgba(255, 255, 255, 0.85);
+  color: #1e2a38;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8px);
             display:flex; align-items:center; justify-content:center;
             z-index:1000;
             transition:background 0.3s, box-shadow 0.3s;
@@ -142,7 +145,6 @@ a:hover::after {
             font-family:'Montserrat', sans-serif;
             font-size:2.5em;
             margin-bottom:20px;
-            text-shadow:2px 2px 4px rgba(0,0,0,0.5);
             text-align:center;
         }
 
@@ -150,7 +152,7 @@ a:hover::after {
 
         .intro-column p {
             font-size:1.1em; margin-bottom:20px;
-            text-shadow:1px 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 1px rgba(255,255,255,0.3); /* subtle highlight for light backgrounds */
             text-align:center;
         }
 
@@ -231,10 +233,12 @@ a:hover::after {
         }
 
         .card {
-            background-color: var(--card-background);
-            border-radius: 15px;
+  background-color: rgba(255, 250, 245, 0.9); /* warm translucent background */
+  backdrop-filter: blur(4px);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             padding: 20px;
-            box-shadow: 0 4px 15px var(--shadow-color);
+            
             transition: transform 0.3s, box-shadow 0.3s;
             overflow: visible; /* Allow overflow for popovers */
             position: relative; /* Ensure correct stacking context for popovers */
