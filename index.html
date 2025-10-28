@@ -223,11 +223,11 @@ a:hover::after {
         }
 
         .card-container {
-            display: grid;
-            gap: 30px;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            margin: 20px 0;
-            overflow: visible; /* Allow overflow */
+          display: grid;
+          gap: 30px;
+          grid-template-columns: 1fr; /* ✅ Only one column per row */
+          margin: 20px 0;
+          overflow: visible; /* Keep overflow behavior */
         }
 
         .card {
@@ -239,8 +239,6 @@ a:hover::after {
             overflow: visible; /* Allow overflow for popovers */
             position: relative; /* Ensure correct stacking context for popovers */
         }
-
-        
 
         .card:hover {
             box-shadow:0 10px 25px var(--shadow-color);
