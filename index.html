@@ -94,7 +94,7 @@ a:hover::after {
             width:100%;
             position:relative; overflow:hidden;
             display:flex; align-items:start; justify-content:center;
-            padding-top: calc(var(--navbar-height) + 100px); /* Move content down */
+            padding-top: calc(var(--navbar-height)); /* Move content down */
             /* No fixed height here, allow page to scroll naturally */
         }
 
@@ -199,7 +199,7 @@ a:hover::after {
             padding:10px 20px; margin:0 10px;
             border-radius:20px;
             background:var(--accent-color);
-            color:var(--primary-color);
+           color: #ffffff; /* white text */
             font-weight:600;
             transition:background-color 0.3s, transform 0.3s;
             box-shadow:0 2px 8px rgba(0,0,0,0.2);
@@ -497,9 +497,7 @@ a:hover::after {
     </style>
 </head>
 <body>
-    <header id="navbar">
-        <h1>Harry Yang</h1>
-    </header>
+
 
     <section class="animated-background">
         <div id="particles-js"></div>
@@ -510,8 +508,13 @@ a:hover::after {
                 <p>
                         <strong style="color: #e74c3c; font-weight: bold; margin-right: 8px;">New! </strong>
                     <a href="https://everlyn.app" style="color: #2980b9; text-decoration: none; font-weight: bold;">Try Everlyn.ai</a>
-                    The fastest video generation model we built, featuring state-of-the-art motion, long and multi-shot video, audio support, and free text-to-image generation.  <br><br>
-
+                    The fastest video model we built.  
+                    </p>
+                    <div style="text-align: center; margin: 15px 0;">
+                      <img src="everlyn.png" alt="Everlyn AI" 
+                           style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <p>
                     I am a Professor at HKUST AMC and a Visiting Professor at Yale University. My research focuses on advancing AGI, particularly in image and video generation. Previously, I worked at Meta as a Research Scientist. I am also the co-founder of <a href="http://everlyn.ai">Everlyn</a>, with <strong>Yann LeCun</strong> as our advisor. I earned PhD in computer science from USC and completed my undergraduate studies at USTC (SCGY). I am honored to be a recipient of the USC Distinguished Alumni Award.
                 </p>
                 <div class="links">
@@ -541,7 +544,17 @@ a:hover::after {
                             <li><em>“Hierarchical Fine-Grained Preference Optimization for Physically Plausible Video Generation”</em> by <strong>Haodong Chen</strong> (my intern) accepted to <strong>NeurIPS 2025</strong>.</li>
                             <li><em>“When Semantics Mislead Vision: Mitigating Large Multimodal Models Hallucinations in Scene Text Spotting and Understanding”</em> by <strong>Yexin Liu</strong> (my PhD student) accepted to <strong>NeurIPS 2025</strong>.</li>
                             <li>Serving as <strong>Area Chair</strong> for <strong>ICLR 2026</strong>.</li>
-                          </ul>
+                            <li>Giving a talk at <strong>HKUST-GZ CMA Seminar</strong>.</li>
+                            <li><strong>Yann LeCun</strong> joins <a href="https://everlyn.ai" target="_blank" rel="noopener noreferrer">Everlyn</a> as our <strong>advisor</strong>.</li>
+                              </ul>
+                                <div style="margin-top:15px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+                                <img src="cma.png" alt="HKUST-GZ CMA Seminar" 
+                                     style="border-radius:10px; max-width:30%; height:auto;">
+                                <img src="yann.png" alt="Yann LeCun joins Everlyn as advisor" 
+                                     style="border-radius:10px; max-width:30%; height:auto;">
+                              </div>
+
+
                         </div>
 
                         <div class="card" data-aos="zoom-in" data-aos-delay="300">
@@ -702,6 +715,14 @@ a:hover::after {
                     <span class="name-pill" data-affiliation="CUHK">Weixiao Wang</span>
                     <span class="name-pill" data-affiliation="HKUST">Zhefan Rao (with Qifeng Chen)</span>
                     <span class="name-pill" data-affiliation="Northwestern Polytechnical University">Dengyang Jiang</span>
+                  </div>
+
+                    <div style="text-align: center; margin-top: 25px;">
+                    <img src="iclr.png" alt="Group attending ICLR 2025 at Singapore" 
+                         style="max-width: 30%; height: auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.95rem; color: #555; margin-top: 10px;">
+                      Group attending <strong>ICLR 2025</strong> in Singapore
+                    </p>
                   </div>
 
                   <h4>Past Students and Interns</h4>
