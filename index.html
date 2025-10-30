@@ -13,13 +13,13 @@
 :root {
   --primary-color: #2b2b2b;        /* Neutral dark gray for text */
   --secondary-color: #ffffff;
-  --accent-color: #5c80b6;         /* Soft blue-gray accent */
+  --accent-color: #d4af37; /* 🌟 Gold accent */
   --background-gradient: linear-gradient(135deg, #fff8f3 0%, #f7f9fc 100%); /* warm ivory to soft white */
   --background-color: #fdfbf8;     /* creamy-white background */
   --text-color: #2f2f2f;           /* slightly softer than pure black */
 --card-background: #fdf7f2; /* warm cream-white background */
-  --link-color: #3b6db3;           /* medium warm blue */
-  --hover-color: #264f85;          /* deeper blue for hover */
+  --link-color: #b8860b; /* slightly darker gold for links */
+  --hover-color: #996515; /* deeper gold when hovered */
   --shadow-color: rgba(0, 0, 0, 0.08); /* softer, warmer shadow */
   --navbar-height: 60px;
   --tooltip-bg: rgba(60, 60, 60, 0.85);
@@ -165,7 +165,7 @@ a:hover::after {
 
         .links a {
             padding:12px 25px; background-color:var(--accent-color);
-            color:var(--primary-color); border-radius:30px; font-weight:500;
+            color: #ffffff; border-radius:30px; font-weight:700;
             transition:background-color 0.3s, transform 0.3s;
             box-shadow:0 4px 10px rgba(0,0,0,0.3);
             cursor:pointer;
@@ -505,24 +505,27 @@ a:hover::after {
             <!-- Introduction Column (Left) -->
             <div class="intro-column" data-aos="fade-right" data-aos-duration="1200">
                 <img src="me.JPG" alt="Harry Yang" class="profile" loading="lazy">
-                <p>
-                        <strong style="color: #e74c3c; font-weight: bold; margin-right: 8px;">New! </strong>
-                    <a href="https://everlyn.app" style="color: #2980b9; text-decoration: none; font-weight: bold;">Try Everlyn.ai</a>
-                    The fastest video model we built.  
-                    </p>
-                    <div style="text-align: center; margin: 15px 0;">
-                      <img src="everlyn.png" alt="Everlyn AI" 
-                           style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                    </div>
-                    <p>
-                    I am a Professor at HKUST AMC and a Visiting Professor at Yale University. My research focuses on advancing AGI, particularly in image and video generation. Previously, I worked at Meta as a Research Scientist. I am also the co-founder of <a href="http://everlyn.ai">Everlyn</a>, with <strong>Yann LeCun</strong> as our advisor. I earned PhD in computer science from USC and completed my undergraduate studies at USTC (SCGY). I am honored to be a recipient of the USC Distinguished Alumni Award.
-                </p>
-                <div class="links">
+                     <div class="links">
                     <a href="https://scholar.google.com/citations?hl=en&user=jpIFgToAAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a>
                     <a href="https://x.com/hyang_ust">X</a>
                     <a href="mailto:harryyang.hk@gmail.com">Email</a>
                     <a href="https://www.linkedin.com/in/harry-yang-a62b3b2a/">LinkedIn</a>
                 </div>
+                 <div style="text-align: center; margin: 25px 0 5px 0;">
+                <img src="everlyn.png" alt="Everlyn AI" 
+                     style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+               <p style="margin-top: 6px; margin-bottom: 0; font-size: 1em; color: #2f2f2f;">
+        <strong style="color: #e74c3c; font-weight: bold; margin-right: 8px;">New!</strong>
+        <a href="https://everlyn.ai" style="color: #ff69b4; text-decoration: none; font-weight: bold;">
+            Try Everlyn.ai
+        </a> — The fastest video model we built.
+    </p>
+            </div>
+
+                    <p>
+                    I am a Professor at HKUST AMC and a Visiting Professor at Yale University. My research focuses on advancing AGI, particularly in image and video generation. Previously, I worked at Meta as a Research Scientist. I am also the co-founder of <a href="http://everlyn.ai">Everlyn</a>, with <strong>Yann LeCun</strong> as our advisor. I earned PhD in computer science from USC and completed my undergraduate studies at USTC (SCGY). I am honored to be a recipient of the USC Distinguished Alumni Award.
+                </p>
+           
             </div>
 
             <!-- Tabs Column (Right) -->
